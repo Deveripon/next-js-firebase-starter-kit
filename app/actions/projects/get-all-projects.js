@@ -1,6 +1,6 @@
 
-export const dynamic = 'force-dynamic';
 'use server';
+export const dynamic = 'force-dynamic';
 
 import { db } from '@/lib/firebase';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
