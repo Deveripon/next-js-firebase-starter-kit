@@ -1,3 +1,5 @@
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/context/auth-context";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -19,10 +21,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
+      <body suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Toaster position="bottom-right" richColors />
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
