@@ -15,6 +15,7 @@ export default function Page() {
     const { user, loading } = useAuth();
     if (loading) return <DashboardLoading />;
     if (!user) redirect('/login');
+
     return (
         <SidebarProvider
             style={{

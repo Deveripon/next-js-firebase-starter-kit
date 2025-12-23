@@ -2,8 +2,13 @@
 
 import { Button } from '@/components/ui/button';
 import { Field, FieldSeparator } from '@/components/ui/field';
-import { auth } from '@/lib/firebase';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth, db } from '@/lib/firebase';
+import {
+    GoogleAuthProvider,
+    getAdditionalUserInfo,
+    signInWithPopup,
+} from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 import { toast } from 'sonner';
@@ -19,9 +24,9 @@ const OAuthButtons = () => {
 
             try {
                 const result = await signInWithPopup(auth, provider);
-                /* const user = result.user; */
+                const user = result.user;
 
-                /*          // Check if this is a new user to store them in Firestore
+                // Check if this is a new user to store them in Firestore
                 const { isNewUser } = getAdditionalUserInfo(result);
 
                 if (isNewUser) {
@@ -34,7 +39,7 @@ const OAuthButtons = () => {
                         provider: 'google',
                         role: 'user', // Default role
                     });
-                } */
+                }
                 toast.success('Sign in successfully');
                 router.push('/dashboard');
             } catch (error) {

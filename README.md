@@ -4,7 +4,7 @@ A professional, production-ready **Next.js** starter kit integrated with **Fireb
 
 ## ✨ Features
 
--   **Framework**: Next.js 14+ (App Router)
+-   **Framework**: Next.js 16 (App Router)
 -   **Authentication**: Firebase Auth (Email/Password & Google OAuth)
 -   **Database**: Firebase Firestore for user profiles and data management
 -   **Forms & Validation**: React Hook Form with Zod schema validation

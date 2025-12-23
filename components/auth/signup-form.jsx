@@ -1,6 +1,6 @@
 'use client';
 
-import { auth } from '@/lib/firebase';
+import { auth, db } from '@/lib/firebase';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import Link from 'next/link';
@@ -17,6 +17,7 @@ import {
     FieldLabel,
 } from '@/components/ui/field';
 import { cn } from '@/lib/utils';
+import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import { toast } from 'sonner';
@@ -79,8 +80,17 @@ export function SignupForm({ className, ...props }) {
                     data.email,
                     data.password
                 );
-                console.log(userCredential);
-                if (userCredential) {
+                const user = userCredential.user;
+
+                // Create a user profile document in Firestore
+                await setDoc(doc(db, 'users', user.uid), {
+                    email: user.email,
+                    createdAt: new Date().toISOString(),
+                    role: 'user', // custom field
+                    preferences: { theme: 'dark' },
+                });
+
+                if (user) {
                     toast.success('Account created successfully');
                     router.push('/dashboard');
                 }

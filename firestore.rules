@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper: Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper: Check if user is an Admin
+    function isAdmin() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // --- Users Collection ---
+    match /users/{userId} {
+      // Users can read/write their own profile. Admins can read all profiles.
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // --- Projects Collection ---
+    match /projects/{projectId} {
+      // 1. Allow creating a project if you are logged in
+      allow create: if isAuthenticated();
+
+      // 2. Allow reading if you own the project OR you are an admin
+      allow read: if isAuthenticated() && (resource.data.ownerId == request.auth.uid || isAdmin());
+
+      // 3. Allow update/delete only if you own the project
+      allow update, delete: if isAuthenticated() && resource.data.ownerId == request.auth.uid;
+    }
+  }
+}
