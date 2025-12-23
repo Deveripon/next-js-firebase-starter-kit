@@ -1,4 +1,4 @@
-import { getAllUsers } from '../actions/users/get-all-user';
+/* import { getAllUsers } from '../actions/users/get-all-user';
 
 const MainPage = async () => {
     const users = await getAllUsers();
@@ -8,4 +8,6 @@ const MainPage = async () => {
 };
 
 export default MainPage;
+
+ */
 
