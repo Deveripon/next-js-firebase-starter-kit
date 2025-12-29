@@ -1,4 +1,4 @@
-import AppleLogo from '@/app/widget/components/svgs/apple.svg';
+import AppleLogo from '@/app/dashboard/widget/components/svgs/apple.svg';
 import { Card, CardContent } from '@/components/ui/card';
 import { TradeUpIcon } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -20,14 +20,14 @@ const StockOverview = () => {
         'M0 240 L 15 220 L 25 245 L 40 215 L 55 235 L 70 205 L 85 225 L 105 190 L 125 210 L 145 185 L 165 205 L 185 175 L 205 195 L 230 165 L 255 185 L 280 155 L 305 175 L 330 145 L 355 165 L 380 135 L 410 160 L 440 130 L 470 155 L 500 125 L 530 100 L 560 120 L 590 90 L 620 110 L 650 80 L 685 105 L 720 75 L 755 100 L 790 70 L 825 95 L 860 65 L 895 90 L 930 60 L 965 85 L 1000 65';
 
     return (
-        <Card className='rounded-2xl border-border bg-card shadow-sm p-2 h-auto md:h-[492px] md:max-h-[492px] flex flex-col'>
-            <CardContent className='pt-6 sm:pt-8 px-6 sm:px-8 flex-1 flex flex-col min-h-0'>
+        <Card className='rounded-2xl border-border bg-card shadow-sm p-0 h-auto md:h-[492px] md:max-h-[492px] flex flex-col'>
+            <CardContent className='p-5 sm:p-6 flex-1 flex flex-col min-h-0'>
                 {/* Header Section */}
                 <div className='flex flex-col gap-4 shrink-0'>
                     <div className='flex items-start justify-between'>
                         <div className='flex items-start gap-4'>
                             {/* Logo */}
-                            <div className='flex h-[40px] w-[40px] shrink-0 items-center justify-center p-2 rounded-full border border-border bg-card shadow-sm'>
+                            <div className='flex h-[40px] w-[40px] shrink-0 items-center justify-center p-2 rounded-full border border-border bg-white shadow-sm'>
                                 <Image
                                     src={AppleLogo}
                                     alt='Apple'
@@ -144,8 +144,8 @@ const StockOverview = () => {
                                 key={range.label}
                                 className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-all ${
                                     range.active
-                                        ? 'bg-[#F1F5F9]'
-                                        : 'hover:bg-muted/50'
+                                        ? 'dark:bg-[#152335] bg-[#F1F5F9]'
+                                        : 'hover:bg-muted/50 dark:hover:bg-muted/50'
                                 }`}>
                                 <span
                                     className={`text-[16px] font-bold ${

@@ -241,5 +241,11 @@
     body {
         @apply bg-background text-foreground antialiased text-[14px];
     }
+    button {
+        @apply !cursor-pointer;
+    }
+    div[data-slot='card'] {
+        @apply p-0!;
+    }
 }
 

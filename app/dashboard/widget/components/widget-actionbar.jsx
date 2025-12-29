@@ -20,17 +20,17 @@ const WidgetActionBar = () => {
 
                 {/* Right side: Actions */}
                 <div className='flex items-center gap-3'>
-                    <button className='inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-white text-[14px] font-medium text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm'>
+                    <button className='inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-border bg-card text-[14px] font-medium text-secondary hover:bg-card/80 hover:border-border transition-all shadow-sm'>
                         <HugeiconsIcon
                             icon={Share08Icon}
-                            className='size-4 text-slate-500'
+                            className='size-4 text-secondary'
                         />
                         <span>Share</span>
                     </button>
 
-                    <button className='inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-white text-[14px] font-medium text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm'>
+                    <button className='inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-border bg-card text-[14px] font-medium text-secondary hover:bg-card/80 hover:border-border transition-all shadow-sm'>
                         <ArrowDownToLine
-                            className='size-4 text-slate-500'
+                            className='size-4 text-secondary'
                             strokeWidth={1.5}
                         />
                         <span>Export</span>
