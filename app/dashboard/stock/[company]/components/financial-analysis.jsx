@@ -1,3 +1,4 @@
+'use client';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChartLine, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
@@ -10,7 +11,7 @@ const FinancialAnalysis = () => {
         'Revenue and Net Income'
     );
 
-    const toggleSection = (section) => {
+    const toggleSection = section => {
         setExpandedSection(expandedSection === section ? null : section);
     };
 
@@ -89,7 +90,7 @@ const FinancialAnalysis = () => {
                 {/* Tabs */}
                 <div className='flex gap-6 border-b border-border/40 mb-6 px-1'>
                     {['Income Statement', 'Cash Flow', 'Balance Sheet'].map(
-                        (tab) => (
+                        tab => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
@@ -127,7 +128,7 @@ const FinancialAnalysis = () => {
 
                 {/* Accordion Sections */}
                 <div className='space-y-3 mb-8'>
-                    {accordionSections.map((section) => (
+                    {accordionSections.map(section => (
                         <div
                             key={section}
                             className='bg-muted/30 dark:bg-muted/10 rounded-lg overflow-hidden transition-all'>
@@ -163,7 +164,7 @@ const FinancialAnalysis = () => {
                 <div>
                     <div className='flex justify-end mb-4'>
                         <div className='inline-flex rounded-full bg-muted p-1 gap-1'>
-                            {['Annual', 'Quarterly'].map((tf) => (
+                            {['Annual', 'Quarterly'].map(tf => (
                                 <button
                                     key={tf}
                                     onClick={() => setTimeFrame(tf)}
@@ -235,3 +236,4 @@ const FinancialAnalysis = () => {
 };
 
 export default FinancialAnalysis;
+

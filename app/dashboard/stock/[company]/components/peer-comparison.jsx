@@ -1,4 +1,4 @@
-import AppleLogo from '@/app/dashboard/widget/components/svgs/apple.svg';
+import AppleLogo from '@/app/dashboard/stock/[company]/components/svgs/apple.svg';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart3, Pencil } from 'lucide-react';
 import Image from 'next/image';

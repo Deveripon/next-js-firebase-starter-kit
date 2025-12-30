@@ -2,12 +2,13 @@
 
 import {
     IconChartBar,
-    IconDashboard,
+    IconCompass,
     IconFolder,
     IconHelp,
     IconListDetails,
     IconSearch,
     IconSettings,
+    IconSparkles,
     IconUsers,
 } from '@tabler/icons-react';
 
@@ -20,12 +21,9 @@ import {
     SidebarFooter,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import Image from 'next/image';
-import Link from 'next/link';
-
+import { IconChartHistogram } from '@tabler/icons-react';
 const data = {
     user: {
         name: 'admin',
@@ -33,11 +31,6 @@ const data = {
         avatar: '/logo.svg',
     },
     navMain: [
-        {
-            title: 'Dashboard',
-            url: '#',
-            icon: IconDashboard,
-        },
         {
             title: 'Lifecycle',
             url: '#',
@@ -57,6 +50,23 @@ const data = {
             title: 'Team',
             url: '#',
             icon: IconUsers,
+        },
+        {
+            title: 'Market Overview',
+            url: '/dashboard/market-overview',
+            icon: IconChartHistogram,
+        },
+        {
+            title: 'Discover',
+            url: '#',
+            icon: IconCompass,
+            className: 'lg:hidden',
+        },
+        {
+            title: 'Bridget AI',
+            url: '#',
+            icon: IconSparkles,
+            className: 'lg:hidden',
         },
     ],
 
@@ -91,21 +101,25 @@ export function AppSidebar({ user, ...props }) {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton
+                        {/*<SidebarMenuButton
                             asChild
                             className='data-[slot=sidebar-menu-button]:p-1.5!'>
-                            <Link href='#'>
-                                <Image
-                                    src='/logo.svg'
-                                    alt='Logo'
-                                    width={32}
-                                    height={32}
-                                />
-                                <span className='text-base font-semibold'>
-                                    Stoxie
-                                </span>
-                            </Link>
-                        </SidebarMenuButton>
+                            <div className='flex items-center'>
+                                <Link
+                                    href='/widget'
+                                    className='h-full w-[30px] flex items-center gap-2'>
+                                    <Image
+                                        src={logo}
+                                        alt='Logo'
+                                        width={30}
+                                        height={30}
+                                    />
+                                    <span className='text-xl font-semibold'>
+                                        Stoxie
+                                    </span>
+                                </Link>
+                            </div>
+                        </SidebarMenuButton> */}
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>

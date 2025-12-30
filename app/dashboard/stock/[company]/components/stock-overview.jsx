@@ -1,19 +1,21 @@
-import AppleLogo from '@/app/dashboard/widget/components/svgs/apple.svg';
+'use client';
+import AppleLogo from '@/app/dashboard/stock/[company]/components/svgs/apple.svg';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import { TradeUpIcon } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpIcon, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
-const StockOverview = () => {
+const StockOverview = ({ company }) => {
     const timeRanges = [
         { label: '5D', change: '+1.00%' },
         { label: '1M', change: '+8.20%' },
         { label: '6M', change: '+26.98%' },
-        { label: 'YTD', change: '+3.03%' },
-        { label: '1Y', change: '+14.34%', active: true },
-        { label: '2Y', change: '+49.34%' },
-        { label: '5Y', change: '+128.30%' },
+        { label: 'YTD', change: '+3.03%', hiddenOnMobile: true },
+        { label: '1Y', change: '+14.34%', active: true, hiddenOnMobile: true },
+        { label: '2Y', change: '+49.34%', hiddenOnMobile: true },
+        { label: '5Y', change: '+128.30%', hiddenOnMobile: true },
     ];
 
     const wavyPathLine =
@@ -42,57 +44,55 @@ const StockOverview = () => {
                                         Apple
                                     </h1>
                                     <span className='text-[32px] leading-[40px] font-normal text-foreground'>
-                                        (AAPL)
+                                        ({company})
                                     </span>
-                                    <span className='inline-flex items-center rounded-full bg-very-positive px-4 py-1 text-[14px] font-bold text-white shadow-sm shadow-very-positive/20 uppercase tracking-tighter'>
+                                    <span className='inline-flex items-center rounded-full bg-positive px-4 py-1 text-[14px] font-bold text-white shadow-sm shadow-positive/20 uppercase tracking-tighter'>
                                         Buy
                                     </span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                <div className='flex flex-col gap-y-[32px]'>
-                                    <div className='flex items-center gap-2 text-[14px] text-secondary font-normal flex-wrap'>
-                                        <button className='flex items-center gap-1 hover:text-foreground transition-colors'>
-                                            NasdaqGS
-                                            <ChevronDown className='size-4' />
-                                        </button>
-                                        <span className='text-secondary'>
-                                            •
-                                        </span>
-                                        <span>USD</span>
-                                        <span className='text-secondary'>
-                                            •
-                                        </span>
-                                        <span>
-                                            Technology Hardware, Storage &
-                                            Peripherals
-                                        </span>
-                                    </div>
-                                    {/* Price Section */}
-                                    <div className='flex flex-col gap-1'>
-                                        <div className='flex items-center gap-3'>
-                                            <span className='text-[32px] leading-[40px] font-bold text-foreground tracking-tight'>
-                                                $258.02
-                                            </span>
-                                            <div className='flex items-center gap-1.5 text-very-positive font-bold text-[20px]'>
-                                                <HugeiconsIcon
-                                                    icon={TradeUpIcon}
-                                                    className='size-6'
-                                                />
-                                                <span>+0.35%</span>
-                                            </div>
-                                        </div>
-                                        <span className='text-[14px] text-tertiary font-normal tracking-tight'>
-                                            Last Update: October 3, 2025
-                                        </span>
-                                    </div>
+                    <div className='flex flex-col gap-y-6'>
+                        <div className='flex items-center gap-2 text-[14px] text-secondary font-normal flex-wrap'>
+                            <button className='flex items-center gap-1 hover:text-foreground transition-colors'>
+                                NasdaqGS
+                                <ChevronDown className='size-4' />
+                            </button>
+                            <span className='text-secondary'>•</span>
+                            <span>USD</span>
+                            <span className='hidden md:inline-block text-secondary'>
+                                •
+                            </span>
+                            <span className='w-full md:w-auto mt-1 md:mt-0'>
+                                Technology Hardware, Storage & Peripherals
+                            </span>
+                        </div>
+
+                        {/* Price Section */}
+                        <div className='flex flex-col gap-1'>
+                            <div className='flex items-center gap-3'>
+                                <span className='text-[32px] leading-[40px] font-bold text-foreground tracking-tight'>
+                                    $258.02
+                                </span>
+                                <div className='flex items-center gap-1.5 text-positive font-bold text-[20px]'>
+                                    <HugeiconsIcon
+                                        icon={TradeUpIcon}
+                                        className='size-6'
+                                    />
+                                    <span>+0.35%</span>
                                 </div>
                             </div>
+                            <span className='text-[14px] text-tertiary font-normal tracking-tight'>
+                                Last Update: October 3, 2025
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 {/* Chart Section */}
-                <div className='mt-4 flex flex-col flex-1 min-h-0'>
+                <div className='mt-4 flex flex-col flex-1 min-h-[160px] md:min-h-0'>
                     <div className='relative w-full flex-1 min-h-0'>
                         <svg
                             viewBox='0 0 1000 300'
@@ -107,13 +107,13 @@ const StockOverview = () => {
                                     y2='1'>
                                     <stop
                                         offset='0%'
-                                        className='text-very-positive'
+                                        className='text-positive'
                                         stopColor='currentColor'
                                         stopOpacity='0.2'
                                     />
                                     <stop
                                         offset='100%'
-                                        className='text-very-positive'
+                                        className='text-positive'
                                         stopColor='currentColor'
                                         stopOpacity='0'
                                     />
@@ -128,7 +128,7 @@ const StockOverview = () => {
                             <path
                                 d={wavyPathLine}
                                 fill='none'
-                                className='text-very-positive'
+                                className='text-positive'
                                 stroke='currentColor'
                                 strokeWidth='3'
                                 strokeLinecap='round'
@@ -138,29 +138,37 @@ const StockOverview = () => {
                     </div>
 
                     {/* Range Selectors with Percentages */}
-                    <div className='mt-4 shrink-0 grid grid-cols-7 gap-2'>
-                        {timeRanges.map(range => (
-                            <button
-                                key={range.label}
-                                className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-all ${
-                                    range.active
-                                        ? 'dark:bg-[#152335] bg-[#F1F5F9]'
-                                        : 'hover:bg-muted/50 dark:hover:bg-muted/50'
-                                }`}>
-                                <span
-                                    className={`text-[16px] font-bold ${
+                    <div className='mt-4 shrink-0'>
+                        <div
+                            className={cn(
+                                'grid gap-2 grid-cols-3 md:grid-cols-7'
+                            )}>
+                            {timeRanges.map(range => (
+                                <button
+                                    key={range.label}
+                                    className={cn(
+                                        'flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-all',
                                         range.active
-                                            ? 'text-foreground'
-                                            : 'text-secondary'
-                                    }`}>
-                                    {range.label}
-                                </span>
-                                <span className='flex items-center gap-0.5 text-[14px] font-bold text-very-positive mt-0.5'>
-                                    <ArrowUpIcon className='size-4' />
-                                    {range.change}
-                                </span>
-                            </button>
-                        ))}
+                                            ? 'dark:bg-[#152335] bg-[#F1F5F9]'
+                                            : 'hover:bg-muted/50 dark:hover:bg-muted/50',
+                                        range.hiddenOnMobile && 'hidden md:flex'
+                                    )}>
+                                    <span
+                                        className={cn(
+                                            'text-[16px] font-bold',
+                                            range.active
+                                                ? 'text-foreground'
+                                                : 'text-secondary'
+                                        )}>
+                                        {range.label}
+                                    </span>
+                                    <span className='flex items-center gap-0.5 text-[14px] font-bold text-positive mt-0.5'>
+                                        <ArrowUpIcon className='size-4' />
+                                        {range.change}
+                                    </span>
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </CardContent>
