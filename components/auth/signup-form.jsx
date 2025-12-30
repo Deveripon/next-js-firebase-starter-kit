@@ -202,7 +202,7 @@ export function SignupForm({ className, ...props }) {
                         <img
                             src='/sign-up.jpg'
                             alt='Sign up background'
-                            className='absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale'
+                            className='absolute inset-0 h-full w-full object-cover '
                         />
                     </div>
                 </CardContent>
